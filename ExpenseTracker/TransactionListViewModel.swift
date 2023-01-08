@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Collections
+import Alamofire
 
 typealias TransactionGroup = OrderedDictionary<String, [Transaction]>
 typealias TransactionPrefixSum = [(String, Double)]
@@ -27,28 +28,19 @@ final class TransactionListViewModel: ObservableObject {
             return
         }
         
-        URLSession.shared.dataTaskPublisher(for: url)
-            .tryMap { (data, response) -> Data in
-                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                    dump(response)
-                    throw URLError(.badServerResponse)
-                }
-                
-                return data
-            }
-            .decode(type: [Transaction].self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    print("Error fetching transactions: ", error.localizedDescription)
-                case .finished:
+        AF.request(url).responseDecodable(of: [Transaction].self) { [weak self] response in
+            switch response.result {
+            case .success:
+                do {
+                    self?.transactions = try JSONDecoder().decode([Transaction].self, from: response.data!)
                     print("Finished fetching transactions")
+                } catch {
+                    print("Error decoding response: \(error)")
                 }
-            } receiveValue: { [weak self] result in
-                self?.transactions = result
+            case .failure(let error):
+                print("Error fetching transactions: ", error.localizedDescription)
             }
-            .store(in: &cancellables)
+        }
     }
     
     func groupTransactionsByMonth() -> TransactionGroup {

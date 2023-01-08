@@ -21,6 +21,7 @@
 		6FFDC0852969D77200BDE9BF /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFDC0842969D77200BDE9BF /* TransactionList.swift */; };
 		6FFDC0882969DE6B00BDE9BF /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 6FFDC0872969DE6B00BDE9BF /* Collections */; };
 		6FFDC08E2969E60100BDE9BF /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 6FFDC08D2969E60100BDE9BF /* SwiftUICharts */; };
+		6FFDC091296AE04F00BDE9BF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6FFDC090296AE04F00BDE9BF /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FFDC08E2969E60100BDE9BF /* SwiftUICharts in Frameworks */,
+				6FFDC091296AE04F00BDE9BF /* Alamofire in Frameworks */,
 				6FFDC0882969DE6B00BDE9BF /* Collections in Frameworks */,
 				6F0731792958BF24002CF83C /* SwiftUIFontIcon in Frameworks */,
 			);
@@ -114,6 +116,7 @@
 				6F0731782958BF24002CF83C /* SwiftUIFontIcon */,
 				6FFDC0872969DE6B00BDE9BF /* Collections */,
 				6FFDC08D2969E60100BDE9BF /* SwiftUICharts */,
+				6FFDC090296AE04F00BDE9BF /* Alamofire */,
 			);
 			productName = ExpenseTracker;
 			productReference = 6F07315C2958ABCB002CF83C /* ExpenseTracker.app */;
@@ -147,6 +150,7 @@
 				6F0731772958BF24002CF83C /* XCRemoteSwiftPackageReference "SwiftUIFontIcon" */,
 				6FFDC0862969DE6B00BDE9BF /* XCRemoteSwiftPackageReference "swift-collections" */,
 				6FFDC08C2969E60100BDE9BF /* XCRemoteSwiftPackageReference "ChartView" */,
+				6FFDC08F296AE04F00BDE9BF /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 6F07315D2958ABCB002CF83C /* Products */;
 			projectDirPath = "";
@@ -407,6 +411,14 @@
 				version = "2.0.0-beta.2";
 			};
 		};
+		6FFDC08F296AE04F00BDE9BF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -424,6 +436,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6FFDC08C2969E60100BDE9BF /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
+		};
+		6FFDC090296AE04F00BDE9BF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6FFDC08F296AE04F00BDE9BF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
